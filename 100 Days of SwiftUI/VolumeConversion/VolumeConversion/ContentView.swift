@@ -8,9 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var input = ""
+    @State private var output = ""
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            Form {
+                Section {
+                    Picker("Input", selection: $input, content: {
+                        Group {
+                            Text("0")
+                            Text("1")
+                        }
+                    })
+                    Picker("Output", selection: $input, content: {
+                        Text(input)
+                    })
+                }
+                Text("Hello, world!")
+            }
+            .navigationBarTitle("Volume Conversion")
+        }
     }
 }
 
