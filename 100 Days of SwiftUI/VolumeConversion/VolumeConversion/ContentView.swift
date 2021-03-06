@@ -35,7 +35,7 @@ struct ContentView: View {
             case .pints:
                 return getAmountInMilliliters(for: .cups) * 2
             case .litters:
-                return getAmountInMilliliters(for: .pints) * 2
+                return getAmountInMilliliters(for: .pints) * 2.11338
             case .gallons:
                 return getAmountInMilliliters(for: .litters) * 4
             }
@@ -47,12 +47,16 @@ struct ContentView: View {
     @State private var output: Volume = .milliliters
     @State private var amount: String = ""
         
+    var intAmount: Int? {
+        return Int(amount)
+    }
+    
     var conversion: Double {
         input.amountInMilliliters / output.amountInMilliliters
     }
     
     var converionText: String {
-        String(format: "%.2f", conversion)
+        String(format: "%.2f", conversion * Double(intAmount ?? 0))
     }
     
     var body: some View {
@@ -63,33 +67,27 @@ struct ContentView: View {
                         ForEach(Volume.allCases, id: \.self) {
                             Text($0.rawValue)
                         }
-                    })
+                    }).pickerStyle(SegmentedPickerStyle())
+                    Text("\(input.milliliters)")
                     Picker(output.rawValue, selection: $output, content: {
                         ForEach(Volume.allCases, id: \.self) {
                             Text($0.rawValue)
                         }
-                    })                    
+                    }).pickerStyle(SegmentedPickerStyle())
+                    Text("\(output.milliliters)")
                 }
                 
                 Section(header: Text("Amount")) {
                     TextField("Amount", text: $amount)
                         .keyboardType(.numberPad)
                 }
-
-                Section(header: Text("Conversion")) {
-                    Text("\(1) \(input.rawValue) = \(converionText) \(output.rawValue)")
+                
+                if let intAmount = intAmount {
+                    Section(header: Text("Conversion")) {
+                        Text("\(intAmount) \(input.rawValue) = \(converionText) \(output.rawValue)")
+                    }
                 }
                 
-                Section(header: Text("Description")) {
-                    HStack {
-                        Text("\(input.rawValue)")
-                        Text("\(input.milliliters)")
-                    }
-                    HStack {
-                        Text("\(output.rawValue)")
-                        Text("\(output.milliliters)")
-                    }
-                }
             }
             .navigationBarTitle("Volume Conversion")
         }
