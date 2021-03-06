@@ -43,28 +43,44 @@ struct ContentView: View {
         
     }
     
-    @State private var input: Volume = .milliliters
-    @State private var output: Volume = .cups
+    @State private var input: Volume = .cups
+    @State private var output: Volume = .milliliters
+    @State private var amount: String = ""
+        
+    var conversion: Double {
+        input.amountInMilliliters / output.amountInMilliliters
+    }
     
-    private let volumes: [Volume] = [.milliliters, .litters, .cups, .pints, .gallons]
+    var converionText: String {
+        String(format: "%.2f", conversion)
+    }
     
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Input/Output selection")) {
+                Section(header: Text("Input/Output")) {
                     Picker(input.rawValue, selection: $input, content: {
-                        ForEach(volumes) {
+                        ForEach(Volume.allCases, id: \.self) {
                             Text($0.rawValue)
                         }
                     })
                     Picker(output.rawValue, selection: $output, content: {
-                        ForEach(volumes) {
+                        ForEach(Volume.allCases, id: \.self) {
                             Text($0.rawValue)
                         }
-                    })
+                    })                    
+                }
+                
+                Section(header: Text("Amount")) {
+                    TextField("Amount", text: $amount)
+                        .keyboardType(.numberPad)
                 }
 
-                Section(header: Text("Input/Output descrription")) {
+                Section(header: Text("Conversion")) {
+                    Text("\(1) \(input.rawValue) = \(converionText) \(output.rawValue)")
+                }
+                
+                Section(header: Text("Description")) {
                     HStack {
                         Text("\(input.rawValue)")
                         Text("\(input.milliliters)")
