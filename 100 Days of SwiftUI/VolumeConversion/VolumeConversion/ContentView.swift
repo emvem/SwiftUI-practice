@@ -87,7 +87,6 @@ struct ContentView: View {
                         Text("\(intAmount) \(input.rawValue) = \(converionText) \(output.rawValue)")
                     }
                 }
-                
             }
             .navigationBarTitle("Volume Conversion")
         }
