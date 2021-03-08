@@ -39,7 +39,6 @@ class NewsViewModelImpl: ObservableObject, NewsViewModel {
             } receiveValue: { (response) in
                 self.articles = response.articles
             }
-
-        
+        self.cancellables.insert(cancellable)
     }
 }
