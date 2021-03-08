@@ -28,7 +28,7 @@ class NewsViewModelImpl: ObservableObject, NewsViewModel {
     func getArticles() {
         self.state = .loading
         let cancellable = service
-            .request(from: NewsAPI.getNews)
+            .request(from: .getNews)
             .sink { (res) in
                 switch res {
                 case .finished:
