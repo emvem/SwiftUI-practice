@@ -7,6 +7,22 @@
 
 import SwiftUI
 
+struct ConditionalModifier: ViewModifier {
+    
+    var trueCondition = true
+    
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(trueCondition ? Color.black : Color.red)
+    }
+}
+
+extension View {
+    func conditionModifier(trueCondition: Bool) -> some View {
+        self.modifier(ConditionalModifier(trueCondition: trueCondition))
+    }
+}
+
 struct ContentView: View {
     @State private var checkAmount = ""
     @State private var numberOfPeople = ""
@@ -56,6 +72,8 @@ struct ContentView: View {
                 
                 Section(header: Text("Total amount")) {
                     Text("$\(totalAmount, specifier: "%.2f")")
+                        .conditionModifier(trueCondition: tipPercentages[tipPercentage] != 0)
+
                 }
             }
             .navigationBarTitle("WeSplit")
