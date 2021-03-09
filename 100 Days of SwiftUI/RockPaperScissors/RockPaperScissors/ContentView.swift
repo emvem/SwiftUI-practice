@@ -8,9 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    private let possibleMoves = ["Rock", "Paper", "Scissors"]
+    @State private var appChoice = Int.random(in: 0..<3)
+    @State private var shouldWin = Bool.random()
+    @State private var score = 0
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            VStack {
+                Text("Score: \(score)")
+                Text("App's move is: \(possibleMoves[appChoice])")
+                Text("You should: \(shouldWin ? "Win" : "Lose")")
+            }
+            VStack {
+                ForEach(possibleMoves) {
+                    Button($0) {
+                        
+                    }
+                }
+            }
+        }
     }
 }
 
