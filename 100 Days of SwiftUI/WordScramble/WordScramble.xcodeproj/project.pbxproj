@@ -13,6 +13,7 @@
 		1329A31F25FFD773004D5F95 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1329A31E25FFD773004D5F95 /* Preview Assets.xcassets */; };
 		1329A32A25FFD773004D5F95 /* WordScrambleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1329A32925FFD773004D5F95 /* WordScrambleTests.swift */; };
 		1329A33525FFD773004D5F95 /* WordScrambleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1329A33425FFD773004D5F95 /* WordScrambleUITests.swift */; };
+		1329A34625FFDE87004D5F95 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1329A34525FFDE87004D5F95 /* start.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		1329A33025FFD773004D5F95 /* WordScrambleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordScrambleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1329A33425FFD773004D5F95 /* WordScrambleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleUITests.swift; sourceTree = "<group>"; };
 		1329A33625FFD773004D5F95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1329A34525FFDE87004D5F95 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				1329A31925FFD771004D5F95 /* ContentView.swift */,
 				1329A31B25FFD773004D5F95 /* Assets.xcassets */,
 				1329A32025FFD773004D5F95 /* Info.plist */,
+				1329A34525FFDE87004D5F95 /* start.txt */,
 				1329A31D25FFD773004D5F95 /* Preview Content */,
 			);
 			path = WordScramble;
@@ -234,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1329A31F25FFD773004D5F95 /* Preview Assets.xcassets in Resources */,
+				1329A34625FFDE87004D5F95 /* start.txt in Resources */,
 				1329A31C25FFD773004D5F95 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
