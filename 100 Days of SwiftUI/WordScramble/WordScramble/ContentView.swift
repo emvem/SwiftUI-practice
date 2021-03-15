@@ -12,7 +12,14 @@ struct ContentView: View {
     let people = ["A", "B", "C"]
     
     var body: some View {
-        List(people, id: \.self) {
+        
+        if let fileURL = Bundle.main.url(forResource: "some-file", withExtension: "txt") {
+            if let fileContents = try? String(contentsOf: fileURL) {
+                
+            }
+        }
+        
+        return List(people, id: \.self) {
             Text("Hello, world! \($0)")
         }
         .listStyle(GroupedListStyle())
